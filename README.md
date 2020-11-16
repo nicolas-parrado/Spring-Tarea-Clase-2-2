@@ -23,6 +23,6 @@ Para esta tarea en particular me voy a centrar en las relaciones entre **Transpo
 
 El modelo se encuentra en formato Draw.io y se puede observar acá:
 
-![Modelo Tarea][./modelo/Modelo-Tarea-2-2.png]
+![Modelo Tarea](modelo/Modelo-Tarea-2-2.png)
 
 
