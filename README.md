@@ -25,4 +25,7 @@ El modelo se encuentra en formato Draw.io y se puede observar acá:
 
 ![Modelo Tarea](modelo/Modelo-Tarea-2-2.png)
 
+## Swagger
+
+El servicio tiene Swagger funcionando en http://localhost:8080/swagger-ui.html
 

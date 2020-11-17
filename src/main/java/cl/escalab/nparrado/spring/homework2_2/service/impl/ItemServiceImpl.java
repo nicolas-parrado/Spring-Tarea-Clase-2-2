@@ -2,9 +2,9 @@ package cl.escalab.nparrado.spring.homework2_2.service.impl;
 
 import cl.escalab.nparrado.spring.homework2_2.exception.ObjetoNoExistenteException;
 import cl.escalab.nparrado.spring.homework2_2.exception.ObjetoNuloException;
-import cl.escalab.nparrado.spring.homework2_2.model.GuiaDespacho;
-import cl.escalab.nparrado.spring.homework2_2.repo.GuiaDespachoRepoInterface;
-import cl.escalab.nparrado.spring.homework2_2.service.GuiaDespachoService;
+import cl.escalab.nparrado.spring.homework2_2.model.Item;
+import cl.escalab.nparrado.spring.homework2_2.repo.ItemRepoInterface;
+import cl.escalab.nparrado.spring.homework2_2.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,82 +14,82 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GuiaDespachoServiceImpl implements GuiaDespachoService {
+public class ItemServiceImpl implements ItemService {
 
     @Autowired
-    private GuiaDespachoRepoInterface repoInterface;
+    private ItemRepoInterface repoInterface;
 
 
     @Override
-    public GuiaDespacho registrar(GuiaDespacho obj) throws ObjetoNuloException {
+    public Item registrar(Item obj) throws ObjetoNuloException {
         if (obj == null) {
-            throw new ObjetoNuloException("GuiaDespacho ingresada no puede ser nula");
+            throw new ObjetoNuloException("Item ingresado no puede ser nulo");
         }
         return repoInterface.save(obj);
     }
 
     @Override
-    public ResponseEntity<GuiaDespacho> registrarEntity(GuiaDespacho obj) {
-        GuiaDespacho g;
+    public ResponseEntity<Item> registrarEntity(Item obj) {
+        Item g;
         try {
             g = registrar(obj);
         } catch (ObjetoNuloException e) {
-            return new ResponseEntity<>(new GuiaDespacho(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Item(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(g, HttpStatus.OK);
     }
 
     @Override
-    public GuiaDespacho modificar(GuiaDespacho obj) throws ObjetoNuloException {
+    public Item modificar(Item obj) throws ObjetoNuloException {
         if (obj == null) {
-            throw new ObjetoNuloException("GuiaDespacho ingresada no puede ser nula");
+            throw new ObjetoNuloException("Item ingresado no puede ser nulo");
         }
         return null;
     }
 
     @Override
-    public ResponseEntity<GuiaDespacho> modificarEntity(GuiaDespacho obj) {
-        GuiaDespacho g;
+    public ResponseEntity<Item> modificarEntity(Item obj) {
+        Item g;
         try {
             g = modificar(obj);
         } catch (ObjetoNuloException e) {
-            return new ResponseEntity<>(new GuiaDespacho(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Item(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(g, HttpStatus.OK);
     }
 
     @Override
-    public List<GuiaDespacho> listar() {
+    public List<Item> listar() {
         return repoInterface.findAll();
     }
 
     @Override
-    public ResponseEntity<List<GuiaDespacho>> listarEntity() {
+    public ResponseEntity<List<Item>> listarEntity() {
         return new ResponseEntity<>(listar(), HttpStatus.OK);
     }
 
     @Override
-    public GuiaDespacho leerPorId(Integer id) throws ObjetoNuloException, ObjetoNoExistenteException {
+    public Item leerPorId(Integer id) throws ObjetoNuloException, ObjetoNoExistenteException {
         if (id == null) {
-            throw new ObjetoNuloException("id de GuiaDespacho ingresada no puede ser nulo");
+            throw new ObjetoNuloException("id de Item ingresado no puede ser nulo");
         }
-        Optional<GuiaDespacho> optional = repoInterface.findById(id);
+        Optional<Item> optional = repoInterface.findById(id);
         if (optional.isPresent()) {
             return optional.get();
         } else {
-            throw new ObjetoNoExistenteException("GuiaDespacho con id " + id + " no existe");
+            throw new ObjetoNoExistenteException("Item con id " + id + " no existe");
         }
     }
 
     @Override
-    public ResponseEntity<GuiaDespacho> leerPorIdEntity(Integer id) {
-        GuiaDespacho g;
+    public ResponseEntity<Item> leerPorIdEntity(Integer id) {
+        Item g;
         try {
             g = leerPorId(id);
         } catch (ObjetoNuloException e) {
-            return new ResponseEntity<>(new GuiaDespacho(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Item(), HttpStatus.BAD_REQUEST);
         } catch (ObjetoNoExistenteException e) {
-            return new ResponseEntity<>(new GuiaDespacho(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Item(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(g, HttpStatus.OK);
     }
@@ -97,7 +97,7 @@ public class GuiaDespachoServiceImpl implements GuiaDespachoService {
     @Override
     public Boolean eliminar(Integer id) throws ObjetoNuloException {
         if (id == null) {
-            throw new ObjetoNuloException("id de GuiaDespacho ingresada no puede ser nulo");
+            throw new ObjetoNuloException("id de Item ingresado no puede ser nulo");
         }
         repoInterface.deleteById(id);
         return true;

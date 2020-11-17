@@ -36,10 +36,10 @@ public class Ruta {
     @Column(name = "fecha_partida")
     private LocalDateTime fechaPartida;
 
-    @Column(name = "fecha_partida")
+    @Column(name = "fechaLlegada")
     private LocalDateTime fechaLlegada;
 
     @NotNull
-    @Column(name = "fecha_partida", nullable = false, length = 20)
+    @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 }

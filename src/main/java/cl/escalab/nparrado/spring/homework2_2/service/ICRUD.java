@@ -13,8 +13,8 @@ public interface ICRUD<T> {
 
     List<T> listar();
 
-    T leeerPorId(Integer id) throws ObjetoNuloException, ObjetoNoExistenteException;
+    T leerPorId(Integer id) throws ObjetoNuloException, ObjetoNoExistenteException;
 
-    boolean eliminar(Integer id) throws ObjetoNuloException, ObjetoNoExistenteException;
+    Boolean eliminar(Integer id) throws ObjetoNuloException;
 
 }

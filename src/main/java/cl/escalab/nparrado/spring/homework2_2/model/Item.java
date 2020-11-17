@@ -12,7 +12,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer iItem;
+    private Integer idItem;
 
     @NotNull
     @Column(name = "sku", nullable = false, unique = true, length = 12)
